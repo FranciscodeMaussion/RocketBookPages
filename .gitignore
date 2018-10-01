@@ -100,5 +100,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# project ignore
+QR/
+Generated/
+
 # mypy
 .mypy_cache/
