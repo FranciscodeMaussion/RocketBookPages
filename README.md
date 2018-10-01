@@ -17,8 +17,12 @@ Generates RocketBook QR Numerated Pages in a PDF depending on the quantity of pa
 
 ## Usage
 You must be placed in the program folder.
-`python rocket-qr.py <quantity> <frame> <type>`
+```bash
+python rocket-qr.py <quantity> <frame> <type>
+```
 
 ## Example
 Will generate an A4 sized file with 5 pages and with DotGrid template
-`python rocket-qr.py 5 A4 0`
+```bash
+python rocket-qr.py 5 A4 0
+```
