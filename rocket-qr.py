@@ -106,7 +106,9 @@ def gen_pdf(quantity=1, frame='A4', type='0'):
         imgDoc = canvas.Canvas(imgTemp, pagesize=frame_class)
         # Draw image on Canvas and save PDF in buffer
         imgDoc.drawImage(qr_generate(num, path, code), int(POSITION[frame][0]), int(POSITION[frame][1]))
+        imgDoc.drawRightString(int(POSITION[frame][0])-7, int(POSITION[frame][1])+3, str(num))
         imgDoc.save()
+
         # Select PageToMerge
         pageToMerge = PdfFileReader(open(TEMPLATE.format(frame, type), "rb")).getPage(0)
         #pageToMerge = PdfFileReader(open(TEMPLATE, "rb")).getPage(0)
@@ -184,14 +186,18 @@ def help_doc(command):
 
 if __name__ == '__main__':
     args = tuple(sys.argv[1:])
-    if args[0] in ['--help', '-h']:
-        try:
-            help_doc(args[1])
-        except IndexError:
-            help_doc("")
-    elif args[0] in ['--clean', '-c']:
-        clean_folders()
-    else:
-        if not os.path.exists(GENERATED_PATH):
-            os.mkdir(GENERATED_PATH)
-        print(gen_pdf(*args))
+    try:
+        if args[0] in ['--help', '-h']:
+            try:
+                help_doc(args[1])
+            except IndexError:
+                help_doc("")
+        elif args[0] in ['--clean', '-c']:
+            clean_folders()
+        else:
+            if not os.path.exists(GENERATED_PATH):
+                os.mkdir(GENERATED_PATH)
+            print(gen_pdf(*args))
+    except IndexError:
+        print("Your command sintax is not correct")
+        help_doc("")
