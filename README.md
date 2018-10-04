@@ -8,6 +8,8 @@ Generates RocketBook QR Numerated Pages in a PDF depending on the quantity of pa
     The size of the page, it can be A4 or Letter.
 - `type` : str,
     A string number that refers to the type of page, it can be (DotGrid:0, Graph:1, Lined:2, Music:3).
+- `numbered` : bool
+    Define if the pages will be numbered or not.
 
 ## Returns
 - `str`,
