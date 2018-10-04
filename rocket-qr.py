@@ -67,7 +67,7 @@ def class_for_name(module_name, class_name):
     c = getattr(m, class_name)
     return c
 
-def gen_pdf(quantity=1, frame='A4', type='0'):
+def gen_pdf(quantity=1, frame='A4', type='0', numbered=false):
     """
     Generates a PDF document.
 
@@ -81,6 +81,8 @@ def gen_pdf(quantity=1, frame='A4', type='0'):
         The size of the page, it can be A4 or Letter.
     type : str
         A string number that refers to the type of page, it can be (DotGrid:0, Graph:1, Lined:2, Music:3).
+    numbered : bool
+        Define if the pages will be numbered or not.
 
     Returns
     -------
@@ -106,7 +108,8 @@ def gen_pdf(quantity=1, frame='A4', type='0'):
         imgDoc = canvas.Canvas(imgTemp, pagesize=frame_class)
         # Draw image on Canvas and save PDF in buffer
         imgDoc.drawImage(qr_generate(num, path, code), int(POSITION[frame][0]), int(POSITION[frame][1]))
-        imgDoc.drawRightString(int(POSITION[frame][0])-7, int(POSITION[frame][1])+3, str(num))
+        if numbered:
+            imgDoc.drawRightString(int(POSITION[frame][0])-7, int(POSITION[frame][1])+3, str(num))
         imgDoc.save()
 
         # Select PageToMerge
@@ -169,10 +172,10 @@ def delete_folder(pth):
 
 def help_doc(command):
     if command == "create":
-        print("python rocket-qr.py <number of pages> <A4 or letter> <0:DotGrid, 1:Graph, 2:Lined or 3:Music>")
+        print("python rocket-qr.py <number of pages> <A4 or letter> <0:DotGrid, 1:Graph, 2:Lined or 3:Music> <number pages (true false)>")
         print("Generate de PDF doc.")
-        print("Default(one page A4 DotGrid): ")
-        print("python rocket-qr.py 1 A4 0")
+        print("Default(one page A4 DotGrid false): ")
+        print("python rocket-qr.py 1 A4 0 false")
         print("Is the same as")
         print("python rocket-qr.py")
     elif command == "clean":
