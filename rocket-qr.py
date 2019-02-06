@@ -11,35 +11,40 @@ OUTPUT_FILENAME = GENERATED_PATH+'/Rocketbook-{}-{}-pages{}.pdf'
 PATH = 'QR/{}'
 POSITION = {
     'A4':[508, 62],
-    'Letter':[527, 47]
+    'Letter':[527, 47],
+    'Mini':[508, 62]
 }
 TYPES = {
     '0': [
         "DotGrid",
         {
             'A4':'5',
-            'Letter':'4'
+            'Letter':'4',
+            'Mini':'3'
         }
     ],
     '1': [
         "Graph",
         {
             'A4':'P',
-            'Letter':'O'
+            'Letter':'O',
+            'Mini':'S'
         }
     ],
     '2': [
         "Lined",
         {
             'A4':'N',
-            'Letter':'M'
+            'Letter':'M',
+            'Mini':'V'
         }
     ],
     '3': [
         "Music",
         {
             'A4':'R',
-            'Letter':'Q'
+            'Letter':'Q',
+            'Mini':'X'
         }
     ],
 }
@@ -64,10 +69,13 @@ def class_for_name(module_name, class_name):
     # Load the module, will raise ImportError if module cannot be loaded
     m = importlib.import_module(module_name)
     # Get the class, will raise AttributeError if class cannot be found
-    c = getattr(m, class_name)
+    try:
+        c = getattr(m, class_name)
+    except AttributeError as e:
+        c = (527, 47)
     return c
 
-def gen_pdf(quantity=1, frame='A4', type='0', numbered=false):
+def gen_pdf(quantity=1, frame='A4', type='0', numbered=False):
     """
     Generates a PDF document.
 
