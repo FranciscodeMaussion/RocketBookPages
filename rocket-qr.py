@@ -5,7 +5,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, LETTER
 
 MESSAGE = 'P{:02d} V0{} S0000000'
-TEMPLATE = 'Source/Rocketbook-{}-{}.pdf'
+TEMPLATE = 'Source/Bases/Rocketbook-{}-Base.pdf'
 GENERATED_PATH = 'Generated'
 OUTPUT_FILENAME = GENERATED_PATH+'/Rocketbook-{}-{}-pages{}.pdf'
 PATH = 'QR/{}'
