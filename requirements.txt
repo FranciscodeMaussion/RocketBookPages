@@ -1,5 +1,0 @@
-Pillow>=5.1.0
-PyPDF2>=1.26.0
-qrcode>=6.0
-reportlab>=3.5.8
-six>=1.11.0
