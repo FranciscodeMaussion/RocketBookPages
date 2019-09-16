@@ -1,30 +1,45 @@
 # RocketBookPages
 Generates RocketBook QR Numerated Pages in a PDF depending on the quantity of pages, the template type and the page size.
 
-## Parameters
-- `quantity` : int,
-    The number of pages that will contain the document.
-- `frame` : str,
-    The size of the page, it can be A4 or Letter.
-- `type` : str,
-    A string number that refers to the type of page, it can be (DotGrid:0, Graph:1, Lined:2, Music:3).
-- `numbered` : bool
-    Define if the pages will be numbered or not.
-
-## Returns
-- `str`,
-    Returns a message with the status
-- `file`,
-    The *.pdf file
+## Installation
+```bash
+git clone https://github.com/FranciscodeMaussion/RocketBookPages
+cd RocketBookPages
+pip install --editable .
+```
 
 ## Usage
-You must be placed in the program folder.
-```bash
-python rocket-qr.py <quantity> <frame> <type>
-```
+- Create a new PDF file 
+    ```bash
+    rocketqr create
+    ```
+    - Parameters:
+        - --quantity, -q: The number of pages that will contain the document
+        - --frame, -f: The page size(A4, Mini, Letter)
+        - --type_of_page, -t: The page type(DotGrid:0, Graph:1, Lined:2, Music:3)
+        - --numbered, -n: Define if the pages will be numbered or not
+    - Note: if a parameter is no provided, it will be asked for.
+- Delete all generated files
+    ```bash
+    rocketqr delete
+    ```
+- Open menu
+    ```bash
+    rocketqr menu
+    ```
 
 ## Example
-Will generate an A4 sized file with 5 pages and with DotGrid template
+Will generate an A4 sized file with 5 pages and with DotGrid template with numbered pages.
 ```bash
-python rocket-qr.py 5 A4 0
+rocketqr create -q 5 -f A4 -t 0 -n True
 ```
+
+## Make use of
+- [Click](https://click.palletsprojects.com)
+- [console-menu](https://github.com/aegirhall/console-menu)
+- [Pillow](https://pillow.readthedocs.io/en/stable/)
+- [PyPDF2](https://pythonhosted.org/PyPDF2/)
+- [qrcode](https://github.com/lincolnloop/python-qrcode)
+- [reportlab](https://www.reportlab.com/)
+- [six](https://github.com/benjaminp/six)
+
