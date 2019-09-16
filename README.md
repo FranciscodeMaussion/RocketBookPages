@@ -11,6 +11,8 @@ pip install --editable .
 ```
 
 ## Usage
+You must be placed in the program folder.
+
 - Create a new PDF file 
     ```bash
     rocketqr create
