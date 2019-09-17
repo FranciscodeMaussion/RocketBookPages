@@ -5,6 +5,8 @@ Generates RocketBook QR Numerated Pages in a PDF depending on the quantity of pa
 ```bash
 git clone https://github.com/FranciscodeMaussion/RocketBookPages
 cd RocketBookPages
+# may activate your venv or install with --user option
+pip install -r requirements.txt
 pip install --editable .
 ```
 
