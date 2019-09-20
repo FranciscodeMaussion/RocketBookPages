@@ -6,9 +6,15 @@ import PyPDF2
 from reportlab.pdfgen import canvas
 from consolemenu import *
 from consolemenu.items import *
+from templates.templates_commands import templates
 
-from constants import TYPES, OUTPUT_FILENAME, PATH, POSITION, TEMPLATE, GENERATED_PATH
+from constants.constants import TYPES, OUTPUT_FILENAME, PATH, POSITION, TEMPLATE, GENERATED_PATH, PAGES_TYPES
 from utils import class_for_name, delete_folder, qr_generate
+
+
+def set_up():
+    main.add_command(templates)
+    main()
 
 
 @click.group()
@@ -42,7 +48,7 @@ def gen_pdf(quantity, frame, type_of_page, numbered):
     frame : str
         The size of the page, it can be A4 or Letter.
     type_of_page : str
-        A string number that refers to the type of page, it can be (DotGrid:0, Graph:1, Lined:2, Music:3).
+        A string number that refers to the type of page, it can be (Blank:0, DotGrid:1, Graph:2, Lined:3, Music:4).
     numbered : bool
         Define if the pages will be numbered or not.
 
@@ -57,9 +63,9 @@ def gen_pdf(quantity, frame, type_of_page, numbered):
     else:
         t = 2
     # Looks for the qr code letter
-    code = TYPES[type_of_page][1][frame]
+    code = TYPES[type_of_page][1][frame]  # TODO get from db
     # Looks for the template type String
-    type_of_page = TYPES[type_of_page][0]
+    type_of_page = PAGES_TYPES[0]
     out_file = OUTPUT_FILENAME.format(frame, type_of_page, quantity)
     if not os.path.exists(GENERATED_PATH):
         pathlib.Path(GENERATED_PATH).mkdir(parents=True, exist_ok=True)
@@ -112,5 +118,9 @@ def menu():
     """
     interactive_menu = ConsoleMenu("Welcome to qr-rocket menu", "Select an option")
     interactive_menu.append_item(CommandItem("Create a new PDF file", "rocketqr create"))
-    interactive_menu.append_item(CommandItem("Delete all auto generated files",  "rocketqr delete"))
+    interactive_menu.append_item(CommandItem("Delete all auto generated files", "rocketqr delete"))
     interactive_menu.show()
+
+
+if __name__ == "__main__":
+    set_up()

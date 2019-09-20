@@ -4,7 +4,7 @@ import pathlib
 
 import qrcode
 
-from constants import MESSAGE
+from constants.constants import MESSAGE
 
 
 def class_for_name(module_name, class_name):

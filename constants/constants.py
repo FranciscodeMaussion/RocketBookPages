@@ -1,5 +1,6 @@
 MESSAGE = 'P{:02d} V0{} S0000000'
 TEMPLATE = 'Source/Bases/Rocketbook-{}-Base.pdf'
+TEMPLATES_JSON = 'Source/templates.json'
 GENERATED_PATH = 'Generated'
 OUTPUT_FILENAME = GENERATED_PATH + '/Rocketbook-{}-{}-pages{}.pdf'
 PATH = 'QR/{}'
@@ -8,6 +9,7 @@ POSITION = {
     'Letter': [527, 47],
     'Mini': [215, 12]
 }
+PAGES_TYPES = ['Blank', 'DotGrid', 'Graph', 'Lined', 'Music']
 # TODO Read types from database
 TYPES = {
     '0': [
