@@ -61,7 +61,9 @@ def gen_pdf(quantity, frame, type_of_page, numbered):
     # Looks for the template type String
     type_of_page = TYPES[type_of_page][0]
     out_file = OUTPUT_FILENAME.format(frame, type_of_page, quantity)
-    if os.path.exists(out_file):
+    if not os.path.exists(GENERATED_PATH):
+        pathlib.Path(GENERATED_PATH).mkdir(parents=True, exist_ok=True)
+    elif os.path.exists(out_file):
         return f"The file {out_file} already exists"
     path = PATH.format(f'{frame}/{type_of_page}')
     frame_class = class_for_name("reportlab.lib.pagesizes", frame.upper())
