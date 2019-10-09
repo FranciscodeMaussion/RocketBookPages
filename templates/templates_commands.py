@@ -51,6 +51,7 @@ def create(name, page_size, qr_x, qr_y, qr_size):
         """
     codes = {}
     while True:
+        # TODO dynamic PAGES_TYPES
         page_type = click.prompt(f"Enter page type to assign{PAGES_TYPES}",
                                  type=click.Choice([str(x) for x in range(len(PAGES_TYPES))]))
         page_type = PAGES_TYPES[int(page_type)]
@@ -72,5 +73,9 @@ def show():
 
     """
     templates_array = read_from_file()
-    for i in templates_array:
-        print(i)
+    if len(templates_array) == 0:
+        print("There are no templates yet")
+    else:
+        for i in templates_array:
+            print(i)
+

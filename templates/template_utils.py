@@ -1,4 +1,5 @@
 import json
+import os
 
 from click import prompt
 
@@ -16,11 +17,12 @@ def save_to_file(data):
 
 def read_from_file():
     # Read JSON file
-    with open(TEMPLATES_JSON) as data_file:
-        data_loaded = json.load(data_file)
     parsed_array = []
-    for x in data_loaded:
-        parsed_array.append(Template(**x))
+    if os.path.exists(TEMPLATES_JSON):
+        with open(TEMPLATES_JSON) as data_file:
+            data_loaded = json.load(data_file)
+        for x in data_loaded:
+            parsed_array.append(Template(**x))
     return parsed_array
 
 
