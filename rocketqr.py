@@ -1,7 +1,6 @@
 from io import BytesIO
 import click
 import os
-import pathlib
 import PyPDF2
 from reportlab.pdfgen import canvas
 from consolemenu import *
@@ -67,13 +66,12 @@ def gen_pdf(quantity, frame, type_of_page, numbered):
     # Looks for the template type String
     type_of_page = PAGES_TYPES[0]
     out_file = OUTPUT_FILENAME.format(frame, type_of_page, quantity)
-    if not os.path.exists(GENERATED_PATH):
-        pathlib.Path(GENERATED_PATH).mkdir(parents=True, exist_ok=True)
-    elif os.path.exists(out_file):
+    os.makedirs(GENERATED_PATH, exist_ok=True)
+    if os.path.exists(out_file):
         return f"The file {out_file} already exists"
     path = PATH.format(f'{frame}/{type_of_page}')
     frame_class = class_for_name("reportlab.lib.pagesizes", frame.upper())
-    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+    os.makedirs(path, exist_ok=True)
     output = PyPDF2.PdfFileWriter()
     for num in range(1, int(quantity) + 1):  # Adjust for the 1 start
         # Using ReportLab Canvas to insert image into PDF
