@@ -38,3 +38,8 @@ def name_validation(templates_array, new_template):
         name_validation(templates_array, new_template)
     else:
         return new_template
+
+
+def search_template(name, templates):
+    if name in templates:
+        return True

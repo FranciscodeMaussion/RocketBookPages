@@ -74,8 +74,8 @@ def show():
     """
     templates_array = read_from_file()
     if len(templates_array) == 0:
-        print("There are no templates yet")
+        click.echo("There are no templates yet")
     else:
         for i in templates_array:
-            print(i)
+            click.echo(i)
 
