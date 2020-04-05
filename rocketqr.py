@@ -114,3 +114,6 @@ def menu():
     interactive_menu.append_item(CommandItem("Create a new PDF file", "rocketqr create"))
     interactive_menu.append_item(CommandItem("Delete all auto generated files",  "rocketqr delete"))
     interactive_menu.show()
+
+if __name__=="__main__":
+    main()
