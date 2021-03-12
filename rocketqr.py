@@ -9,7 +9,7 @@ from templates.template_utils import read_from_file
 
 from templates.templates_commands import templates
 
-from constants.constants import OUTPUT_FILENAME, PATH, TEMPLATE, GENERATED_PATH, PAGES_TYPES
+from constants.constants import OUTPUT_FILENAME, PATH, TEMPLATE, GENERATED_PATH
 from utils import class_for_name, delete_folder, qr_generate
 
 
@@ -69,14 +69,14 @@ def gen_pdf(quantity, numbered):
     type_of_page = codes_keys[int(type_of_page)]
     # Looks for the qr code letter
     code = use_template.codes[type_of_page]
-    out_file = OUTPUT_FILENAME.format(frame, type_of_page, quantity)
+    out_file = OUTPUT_FILENAME.format(use_template.name, type_of_page, quantity)
     os.makedirs(GENERATED_PATH, exist_ok=True)
     if os.path.exists(out_file):
         message = f"The file {out_file} already exists"
         click.echo(message)
         return message
-    path = PATH.format(f'{frame}/{type_of_page}')
-    frame_class = class_for_name("reportlab.lib.pagesizes", frame.upper())
+    path = PATH.format(f'{use_template.name}/{type_of_page}')
+    frame_class = class_for_name("reportlab.lib.pagesizes", use_template.page_size)
     os.makedirs(path, exist_ok=True)
     output = PyPDF2.PdfFileWriter()
     for num in range(1, int(quantity) + 1):  # Adjust for the 1 start
@@ -91,7 +91,7 @@ def gen_pdf(quantity, numbered):
         img_doc.save()
 
         # Select page_to_merge
-        page_to_merge = PyPDF2.PdfFileReader(open(TEMPLATE.format(frame, type_of_page), "rb")).getPage(0)
+        page_to_merge = PyPDF2.PdfFileReader(open(TEMPLATE.format(use_template.name, type_of_page), "rb")).getPage(0)
         # page_to_merge = PdfFileReader(open(TEMPLATE, "rb")).getPage(0)
         page_to_merge.mergePage(PyPDF2.PdfFileReader(BytesIO(img_temp.getvalue())).getPage(0))
         output.addPage(page_to_merge)

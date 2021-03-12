@@ -1,6 +1,6 @@
 [
     {
-        "name": "A4 qr",
+        "name": "A4",
         "page_size": "A4",
         "codes": {
             "Blank": "0",
@@ -16,7 +16,7 @@
         "qr_size": 2
     },
     {
-        "name": "Letter qr",
+        "name": "Letter",
         "page_size": "Letter",
         "codes": {
             "Blank": "1",
@@ -32,7 +32,7 @@
         "qr_size": 2
     },
         {
-        "name": "Mini qr",
+        "name": "Mini",
         "page_size": "Mini",
         "codes": {
             "Blank": "2",
