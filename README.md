@@ -28,6 +28,12 @@ You must be placed in the program folder.
     ```bash
     rocketqr delete
     ```
+- Templates section
+    ```bash
+    rocketqr templates menu
+    rocketqr templates show
+    rocketqr templates create
+    ```
 - Open menu
     ```bash
     rocketqr menu
