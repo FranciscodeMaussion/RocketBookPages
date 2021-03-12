@@ -124,6 +124,7 @@ def menu():
     interactive_menu = ConsoleMenu("Welcome to qr-rocket menu", "Select an option")
     interactive_menu.append_item(CommandItem("Create a new PDF file", "rocketqr create"))
     interactive_menu.append_item(CommandItem("Delete all auto generated files", "rocketqr delete"))
+    interactive_menu.append_item(CommandItem("Go to templates menu", "rocketqr templates menu"))
     interactive_menu.show()
 
 

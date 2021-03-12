@@ -1,4 +1,7 @@
 import click
+from consolemenu import ConsoleMenu
+from consolemenu.items import CommandItem
+
 from templates.template_utils import read_from_file, save_to_file, name_validation
 
 from templates.Template import Template
@@ -13,6 +16,15 @@ def templates():
 
     """
     pass
+
+
+@templates.command(name="menu")
+def templates_menu():
+    templates_menu = ConsoleMenu("You are in qr-rocket templates menu", "Select an option")
+    templates_menu.append_item(CommandItem("Show templates", "rocketqr templates show"))
+    templates_menu.append_item(CommandItem("Create new template", "rocketqr templates create"))
+    templates_menu.append_item(CommandItem("Go back to main menu", "rocketqr menu"))
+    templates_menu.show()
 
 
 @templates.command(name="create")

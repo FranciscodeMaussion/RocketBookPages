@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8acd4bfcc60a9a8a852d6688764cbfc145f0005964f54b2db25b900947cea281"
+            "sha256": "19c7d8ec24afd4274d4ce059d78927b4efb4b6e3aa314a84324f6ea6320737eb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -120,6 +120,10 @@
             ],
             "index": "pypi",
             "version": "==3.5.65"
+        },
+        "rocketqr": {
+            "editable": true,
+            "path": "."
         },
         "six": {
             "hashes": [
