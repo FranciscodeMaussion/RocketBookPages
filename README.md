@@ -2,6 +2,7 @@
 Generates RocketBook QR Numerated Pages in a PDF depending on the quantity of pages, the template type and the page size.
 
 ## Installation
+It has been tested in python3 only.
 ```bash
 git clone https://github.com/FranciscodeMaussion/RocketBookPages
 cd RocketBookPages
