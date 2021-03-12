@@ -18,11 +18,11 @@ def save_to_file(data):
 def read_from_file():
     # Read JSON file
     parsed_array = []
-    if os.path.exists(TEMPLATES_JSON):
-        with open(TEMPLATES_JSON) as data_file:
-            data_loaded = json.load(data_file)
-        for x in data_loaded:
-            parsed_array.append(Template(**x))
+    template_file = TEMPLATES_JSON if os.path.exists(TEMPLATES_JSON) else "templates_default.json"
+    with open(template_file) as data_file:
+        data_loaded = json.load(data_file)
+    for x in data_loaded:
+        parsed_array.append(Template(**x))
     return parsed_array
 
 
