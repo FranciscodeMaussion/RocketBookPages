@@ -79,3 +79,5 @@ Generated/
 /.idea/
 /rocketqr.egg-info/
 /Source/templates.json
+
+*__pycache__*
