@@ -27,10 +27,12 @@ def main():
 @click.option('--quantity', '-q', prompt='Enter number of pages',
               show_default=True, default=1, type=int,
               help='The number of pages that will contain the document')
+@click.option('--frame', '-f', default=None)
+@click.option('--type_of_page', '-t', default=None)
 @click.option('--numbered', '-n', prompt='Enter True for numbered pages',
               show_default=True, default=False, type=bool,
               help='Define if the pages will be numbered or not')
-def gen_pdf(quantity, numbered):
+def gen_pdf(quantity, frame, type_of_page, numbered):
     """
     Generates a PDF document.
 
@@ -54,17 +56,26 @@ def gen_pdf(quantity, numbered):
 
     """
     frames = read_from_file()
-    frame = click.prompt(f"Enter frame size{[str(x.name) for x in frames]}",
-                         show_default=True, default='0',
-                         type=click.Choice([str(x) for x in range(len(frames))])
-                         )
+    str_choices = []
+    choices = []
+    for i, i_frame in enumerate(frames):
+        str_choices.append(i_frame.name)
+        choices.append(i)
+    if frame is None:
+        frame = click.prompt(f"Enter frame size{str_choices}",
+                             show_default=True, default='0',
+                             type=click.Choice(choices)
+                             )
+    else:
+        frame = str_choices.index(frame)
     use_template = frames[int(frame)]
 
     codes_keys = list(use_template.codes.keys())
-    type_of_page = click.prompt(f'Enter page type{codes_keys}',
-                                show_default=True, default='0',
-                                type=click.Choice([str(x) for x in range(len(codes_keys))]),
-                                )
+    if type_of_page is None:
+        type_of_page = click.prompt(f'Enter page type{codes_keys}',
+                                    show_default=True, default='0',
+                                    type=click.Choice([str(x) for x in range(len(codes_keys))]),
+                                    )
     # Looks for the template type String
     type_of_page = codes_keys[int(type_of_page)]
     # Looks for the qr code letter
