@@ -1,0 +1,50 @@
+[
+    {
+        "name": "A4",
+        "page_size": "A4",
+        "codes": {
+            "Blank": "0",
+            "DotGrid": "5",
+            "Graph": "P",
+            "Lined": "N",
+            "Music": "R"
+        },
+        "qr_position": [
+            508.0,
+            62.0
+        ],
+        "qr_size": 2
+    },
+    {
+        "name": "Letter",
+        "page_size": "Letter",
+        "codes": {
+            "Blank": "1",
+            "DotGrid": "4",
+            "Graph": "O",
+            "Lined": "M",
+            "Music": "Q"
+        },
+        "qr_position": [
+            527.0,
+            47.0
+        ],
+        "qr_size": 2
+    },
+        {
+        "name": "Mini",
+        "page_size": "Mini",
+        "codes": {
+            "Blank": "2",
+            "DotGrid": "3",
+            "Graph": "S",
+            "Lined": "V",
+            "Music": "X"
+        },
+        "qr_position": [
+            215.0,
+            12.0
+        ],
+        "qr_size": 1
+    }
+]

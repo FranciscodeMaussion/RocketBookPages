@@ -1,10 +1,9 @@
 import importlib
 import os
-import pathlib
 
 import qrcode
 
-from constants import MESSAGE
+from constants.constants import MESSAGE
 
 
 def class_for_name(module_name, class_name):
@@ -72,10 +71,12 @@ def qr_generate(page_number, path, code, t=2):
     return file
 
 
-def delete_folder(pth):
-    pth = pathlib.Path(pth)
-    for sub in pth.iterdir():
-        if sub.is_dir():
-            delete_folder(sub)
-        else:
-            sub.unlink()
+def delete_folder(target_deletable):
+    print("Deleting all in: ", target_deletable)
+    for dir_deletable in os.listdir(target_deletable):
+        try:
+            delete_folder(target_deletable + '/' + dir_deletable)
+        except OSError:
+            os.remove(target_deletable + '/' + dir_deletable)
+    os.rmdir(target_deletable)
+

@@ -12,6 +12,8 @@ pip install --editable .
 ```
 
 ## Usage
+You must be placed in the program folder.
+
 - Create a new PDF file 
     ```bash
     rocketqr create
@@ -26,10 +28,20 @@ pip install --editable .
     ```bash
     rocketqr delete
     ```
+- Templates section
+    ```bash
+    rocketqr templates menu
+    rocketqr templates show
+    rocketqr templates create
+    ```
 - Open menu
     ```bash
     rocketqr menu
     ```
+  
+## Template json files
+To share a template file just send your .json located in Source/templates.json and the pdf file needed by it.
+To use a template file, put it in Sources/templates.json
 
 ## Example
 Will generate an A4 sized file with 5 pages and with DotGrid template with numbered pages.
