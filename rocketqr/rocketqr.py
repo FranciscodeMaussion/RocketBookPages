@@ -132,7 +132,6 @@ def clean_folders():
 
     """
     delete_folder(GENERATED_PATH)
-    delete_folder(PATH.format(""))
     click.echo("All clear here")
     click.pause()
 

@@ -20,13 +20,14 @@ def templates():
 @templates.command(name="menu")
 def templates_menu():
     templates_menu = ConsoleMenu(
-        "You are in qr-rocket templates menu", "Select an option"
+        "You are in qr-rocket templates menu",
+        "Select an option",
+        exit_option_text="Back to main menu",
     )
     templates_menu.append_item(CommandItem("Show templates", "rocketqr templates show"))
     templates_menu.append_item(
         CommandItem("Create new template", "rocketqr templates create")
     )
-    templates_menu.append_item(CommandItem("Go back to main menu", "rocketqr menu"))
     templates_menu.show()
 
 
@@ -84,8 +85,8 @@ def create(name, page_size, qr_x, qr_y, qr_size):
     while True:
         # TODO dynamic PAGES_TYPES
         page_type = click.prompt(
-            f"Enter page type to assign{PAGES_TYPES}",
-            type=click.Choice(click.IntRange(0, len(PAGES_TYPES))),
+            f"Enter page type to assign{PAGES_TYPES}[{0}..{len(PAGES_TYPES)}]",
+            type=click.IntRange(0, len(PAGES_TYPES)),
         )
         page_type = PAGES_TYPES[int(page_type)]
         type_code = click.prompt(f"Enter a code to assign to {page_type}", type=str)

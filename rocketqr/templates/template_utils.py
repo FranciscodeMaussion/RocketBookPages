@@ -10,7 +10,7 @@ from .Template import Template
 
 def save_to_file(data):
     # Write JSON file
-    with open(TEMPLATES_JSON, "w", encoding="utf-8") as f:
+    with open(TEMPLATES_JSON, "w+", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4, default=lambda x: x.__dict__)
     return "Done"
 
