@@ -7,15 +7,16 @@ from consolemenu import ConsoleMenu
 from consolemenu.items import CommandItem
 from reportlab.pdfgen import canvas
 
-from constants.constants import GENERATED_PATH, OUTPUT_FILENAME, PATH, TEMPLATE
-from templates.templates_commands import templates
-from utils import (
+from rocketqr.utils import (
     class_for_name,
     delete_folder,
     get_input_frame,
     get_input_type,
     qr_generate,
 )
+
+from .constants.constants import GENERATED_PATH, OUTPUT_FILENAME, PATH, TEMPLATE
+from .templates.templates_commands import templates
 
 
 def set_up():

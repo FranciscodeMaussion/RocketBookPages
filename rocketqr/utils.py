@@ -4,8 +4,8 @@ import os
 import click
 import qrcode
 
-from constants.constants import MESSAGE
-from templates.template_utils import read_from_file
+from .constants.constants import MESSAGE
+from .templates.template_utils import read_from_file
 
 
 def class_for_name(module_name, class_name):

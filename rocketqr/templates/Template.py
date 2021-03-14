@@ -10,10 +10,12 @@ class Template(object):
         self.codes.append(code)
 
     def __str__(self):
-        text = f'Template:\n\t' \
-               f'name = {self.name}\n\t' \
-               f'page_size = {self.page_size}\n\t' \
-               f'code = {self.codes}\n\t' \
-               f'qr_position = {self.qr_position}\n\t' \
-               f'qr_size = {self.qr_size}'
+        text = (
+            f"Template:\n\t"
+            f"name = {self.name}\n\t"
+            f"page_size = {self.page_size}\n\t"
+            f"code = {self.codes}\n\t"
+            f"qr_position = {self.qr_position}\n\t"
+            f"qr_size = {self.qr_size}"
+        )
         return text

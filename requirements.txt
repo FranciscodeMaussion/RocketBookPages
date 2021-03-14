@@ -1,7 +1,0 @@
-Click>=7.0
-console-menu>=0.6.0
-Pillow>=6.1.0
-PyPDF2>=1.26.0
-qrcode>=6.1
-reportlab>=3.5.23
-six>=1.12.0

@@ -3,14 +3,14 @@ import os
 
 from click import prompt
 
-from templates.Template import Template
+from rocketqr.constants.constants import SOURCE_PATH, TEMPLATES_JSON
 
-from constants.constants import TEMPLATES_JSON
+from .Template import Template
 
 
 def save_to_file(data):
     # Write JSON file
-    with open(TEMPLATES_JSON, 'w', encoding='utf-8') as f:
+    with open(TEMPLATES_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4, default=lambda x: x.__dict__)
     return "Done"
 
@@ -18,7 +18,11 @@ def save_to_file(data):
 def read_from_file():
     # Read JSON file
     parsed_array = []
-    template_file = TEMPLATES_JSON if os.path.exists(TEMPLATES_JSON) else "templates_default.json"
+    template_file = (
+        TEMPLATES_JSON
+        if os.path.exists(TEMPLATES_JSON)
+        else SOURCE_PATH + "templates_default.json"
+    )
     with open(template_file) as data_file:
         data_loaded = json.load(data_file)
     for x in data_loaded:
@@ -34,7 +38,7 @@ def name_validation(templates_array, new_template):
             ask = True
             break
     if ask:
-        new_template.name = prompt('Enter template name', type=str)
+        new_template.name = prompt("Enter template name", type=str)
         name_validation(templates_array, new_template)
     else:
         return new_template
