@@ -1,5 +1,3 @@
-import os
-
 import click
 from consolemenu import ConsoleMenu
 from consolemenu.items import CommandItem
@@ -82,7 +80,6 @@ def create(name, page_size, qr_x, qr_y, qr_size):
         IDK for mini = 1 rest = 2
 
     """
-    click.echo(os.listdir("."))
     codes = {}
     while True:
         # TODO dynamic PAGES_TYPES
@@ -102,6 +99,7 @@ def create(name, page_size, qr_x, qr_y, qr_size):
     templates_array.append(new_template)
     save_to_file(templates_array)
     click.echo(f"Template added\n{new_template}")
+    click.pause()
 
 
 @templates.command(name="show")
@@ -116,3 +114,4 @@ def show():
     else:
         for i in templates_array:
             click.echo(i)
+    click.pause()

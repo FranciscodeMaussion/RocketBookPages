@@ -121,6 +121,7 @@ def gen_pdf(quantity, frame, type_of_page, numbered):
     output_stream.close()
     message = f"The file {out_file} was created"
     click.echo(message)
+    click.pause()
     return message
 
 
@@ -133,6 +134,7 @@ def clean_folders():
     delete_folder(GENERATED_PATH)
     delete_folder(PATH.format(""))
     click.echo("All clear here")
+    click.pause()
 
 
 @main.command(name="menu")

@@ -36,9 +36,7 @@ setup(
         ),
         ("Source", ["Source/templates_default.json"]),
     ],
-    install_requires=[
-        "Click",
-    ],
+    install_requires=["Click", "PyPDF2", "console-menu", "reportlab", "qrcode"],
     entry_points="""
         [console_scripts]
         rocketqr=rocketqr.rocketqr:set_up
