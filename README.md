@@ -6,8 +6,6 @@ It has been tested in python3 only.
 ```bash
 git clone https://github.com/FranciscodeMaussion/RocketBookPages
 cd RocketBookPages
-# may activate your venv or install with --user option
-pip install -r requirements.txt
 pip install --editable .
 ```
 
